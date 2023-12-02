@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阶乘的和</title>
+</head>
+
+<body>
+    <script>
+        // 阶乘函数定义
+        function factorial(num) {
+            if (num === 1) {
+                return 1;
+            } else if (num === 0) {
+                return 1;
+            } else {
+                return num * factorial(num - 1)
+            }
+        }
+
+        //计算从 1 开始到 n 的阶乘的累加和
+        function addRes(n) {
+            var res1 = 0;
+            for (var i = 1; i <= n; i++) {
+                res1 += factorial(i);
+            }
+            return res1;
+        }
+
+        //封装为一个主函数
+        function main(n) {
+            // 当n为1直接输出结果为1，避免打印出1!+2!+...+1!=1的书写bug , if else的条件同理
+            if (n === 1) {
+                document.write("<h1 style='text-align:center;'>" + "<font color='red'>阶乘的结果为：</font>1!=1" +
+                    "</h1>");
+            } else if (n === 2) {
+                document.write("<h1 style='text-align:center;'>" + "<font color='red'>阶乘的结果为：</font>1!+2!=4" +
+                    "</h1>");
+            } else {
+                //返回最终累加和结果
+                var res2 = addRes(n);
+                //字符串拼接，为输出到页面上做准备
+                var str = "<font color='red'>阶乘的结果为：</font>1!+2!+......+";
+                str += n + "! =" + res2;
+                document.write("<h1 style='text-align:center;'>" + str + "</h1><hr/>");
+            }
+        }
+
+        //显示提示用户进行输入n的对话框
+        var n = parseInt(prompt("请输入求的阶乘的数是多少(输入的数必须为大于0的整数):"));
+        //执行主函数计算　输出答案 (求1到n的阶乘的和)
+        main(n);
+    </script>
+</body>
+
+</html>
